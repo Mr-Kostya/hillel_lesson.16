@@ -1,13 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сalculator</title>
 </head>
 <body>
+
+
+<script>
+    class Calculator {
+        value = 0;
+        constructor(initialValue) {
+            this.value = initialValue;
+        }
+
+        checkNaN = (checkValue) => {
+            if (typeof checkValue !== "number") {
+                console.error(`NaN value is ${this.value}`);
+                return false;
+            }
+            return true;
+        };
+
+        add(addValue) {
+            if (!this.checkNaN(addValue)) {
+                return this.value;
+            }
+            this.value = this.value + addValue;
+            return this.value;
+        };
+
+        sub(subValue) {
+            if (!this.checkNaN(subValue)) {
+                return this.value;
+            }
+            this.value = this.value - subValue;
+            return this.value;
+        };
+
+        set(setValue) {
+            if (!this.checkNaN(setValue)) {
+                return this.value;
+            }
+            this.value = setValue;
+        };
+
+        get() {
+            return this.value;
+        };
+    }
+
+    const calculator = new Calculator(100);
+
+    console.log(calculator.add(10)); // 110
+    console.log(calculator.add(10)); // 120
+    console.log(calculator.sub(20)); // 100
+
+    console.log(calculator.set(20)); //
+    console.log(calculator.add(10)); // 30
+    console.log(calculator.add(10)); // 40
+    console.log(calculator.add('qwe')); // NaN и значение 40 не менять
+    console.log(calculator.get()); // 40
+</script>
 
 </body>
 </html>
